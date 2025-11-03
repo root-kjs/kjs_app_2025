@@ -15,7 +15,6 @@ class MyApp1 extends StatelessWidget{
     return MaterialApp( home : Text("안녕!") );
   }
 }
-
 class MyApp2 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
