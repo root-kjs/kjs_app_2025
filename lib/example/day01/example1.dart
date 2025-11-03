@@ -14,7 +14,6 @@ class MyApp1 extends StatelessWidget{
     // TODO: implement build
     return MaterialApp( home : Text("안녕!") );
   }
-
 }
 
 class MyApp2 extends StatelessWidget{
