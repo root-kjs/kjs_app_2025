@@ -24,7 +24,9 @@ class MyApp extends StatelessWidget{
             Text("세로정렬 2번째 위젯2"),
             TextButton(onPressed: increment , child: Text("세로정렬 3번째 위젯3"),),
             Text("세로정렬 4번째 위젯 + count : ${ count }")
-          ],),), // 본문
+          ],
+        ),
+      ), // 본문
     )
     );
   }
