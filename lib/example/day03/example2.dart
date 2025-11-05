@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 // 1. main
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget{ // 리렌더링 없는(상태 없는) 위�
 
 // 3. 위젯 만들기(페이지) :: 컴포넌트 역할
 class GoodsWidget extends StatefulWidget{ // 상태 있는(useState) 위젯 만들기
-  // 상테 위젯 등록
+  // 상태 위젯 등록
   @override
   GoodsWidgetState createState() => GoodsWidgetState();
 }// class end
@@ -30,10 +31,21 @@ class GoodsWidgetState extends State<GoodsWidget>{
   TextEditingController descCont = TextEditingController();
 
   // 2) goodsSave 함수 정의
-  void goodsSave (){
+  void goodsSave () async{
     print( nameCont.text ); // 컨트롤러명.text 속성 이용하여 입력받은 값 가져오기
     final obj = { 'gname':nameCont.text, 'gprice':priceCont.text, 'gdesc':descCont.text };
     print(obj);
+    try{
+      final dio = Dio(); // dio 객체 생성
+      // 웹에서는 되지만(localhost:8080 가능) 모바일에서는 http 작동 안함.  loacalhost 안됨  **IP로 해야 함.
+      // IPv4 주소 . . . . . . . . . : 192.168.40.186
+      // 스프링 컨트롤러에서 CrossOrigin(ori)
+      final response = await dio.post("http://192.168.40.186:8080/api/goods", data:obj); // 주의 : web(http), 플러터(모바일)는 .exe SW라 http 없음.
+      final data = response.data;
+      print( data );
+    }catch(e){
+
+    }
   }
 
   @override
